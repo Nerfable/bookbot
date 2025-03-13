@@ -1,34 +1,35 @@
 def get_num_words(text):
-    words = text.split()
-    word_count = len(words)
-    return word_count
+    splitted_text = text.split()
+    num_words = len(splitted_text)
+    return num_words
+
+
+def get_dict_num_characters(text):
+    characters = text.lower()
+    dict_num_chars = {}
+    for char in characters:
+        if char not in dict_num_chars:
+            dict_num_chars[char] = 1
+        else: 
+            dict_num_chars[char] += 1
+    return dict_num_chars
+
+
+def sort_on(dict):
+    return dict["num"]
 
 
 
-def count_letters(text):
-    lower_cases = text.lower()
-    letter_count = {}
-
-    for char in lower_cases:
-        if char  not in letter_count:
-            letter_count[char] = 1
-        else:
-            letter_count[char] += 1
-    return letter_count
+def chars_dict_to_sorted_list(dict_num_chars):
+    sorted_list = []
+    for char in dict_num_chars:
+        sorted_list.append({"char": char, "num": dict_num_chars[char]})
+    sorted_list.sort(key=sort_on, reverse=True)
+    return sorted_list
 
 
-def sort_dict(char_dict):
-    char_list = []
 
-    for char, count in char_dict.items():
-        char_list.append({"char": char, "count": count})
 
-        def sort_on(dict):
-            return dict["count"]
-    
-    char_list.sort(reverse=True, key=sort_on)
-
-    return char_list
         
 
 
